@@ -43,9 +43,15 @@ p:last-child { margin-bottom: 0; }
     margin:3px;
 }
 
-#bettina{
+#bettina
+{
     height: 75%;
     width: 75%;
+}
+
+#logo{
+    height: 40%;
+    width: 40%;
 }
 
 .tm-footer-text {
@@ -166,7 +172,7 @@ p:last-child { margin-bottom: 0; }
 
 
 #tm-section-1 {	background-image: url(../img/strip-bg-01.jpg); }
-#tm-section-2 {	background-image: url(../img/strip-bg-02.jpg); }
+#tm-section-2 {	background-image: url(../img/newnashville.jpg); }
 #tm-section-3 {	background-image: url(../img/strip-bg-03.jpg); }
 #tm-section-4 {	background-image: url(../img/strip-bg-04.jpg); }
 .tm-footer { 
