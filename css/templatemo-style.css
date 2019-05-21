@@ -17,16 +17,16 @@ a:focus {
 	outline: none;
 }
 
-ul, h1 { 
+ul, h1 {
 	padding: 0;
-	margin: 0; 
+	margin: 0;
 }
 
 html {	font-size: 18px; }
 
 body {
 	background: url(../img/strip-bg.jpg);
-	color: rgba(255,255,255,0.95);	
+	color: rgba(255,255,255,0.95);
 	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 	padding-left: 60px;
 	padding-right: 60px;
@@ -63,17 +63,15 @@ p:last-child { margin-bottom: 0; }
 .tm-footer a {
 	color: #fff;
 }
-.tm-container { 
-	background-color: white; 
-	padding: 30px 45px;
-	max-width: 1600px;
+.tm-container {
+	max-width: 100%;
 }
 
 .navbar-row { position: relative; }
 .navbar-container {
-	background-color:#800080; 
+	background-color:#800080;
 	font-size: 1em;
-	position: absolute; 
+	position: absolute;
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
@@ -83,14 +81,14 @@ p:last-child { margin-bottom: 0; }
     -webkit-align-items: center;
         -ms-flex-align: center;
             align-items: center;
-    padding: 40px;
+    padding: 20px;
     z-index: 1000;
 }
 
 .navbar {
 	color: white;
 	font-size: 1em;
-	padding: 0;	
+	padding: 0;
 }
 
 .navbar-container.sticky {
@@ -126,7 +124,7 @@ p:last-child { margin-bottom: 0; }
 .nav-item {
 	float: left;
 	list-style: none;
-	font-size: 1.8em;	
+	font-size: 1.8em;
 }
 
 .navbar-nav .nav-link,
@@ -145,7 +143,11 @@ p:last-child { margin-bottom: 0; }
 	text-decoration: none;
 }
 
-.tm-page-content { margin-top: 255px; }
+.tm-page-content { margin-top: 150px; }
+
+.gitlink {
+    margin-left: 5%;
+}
 
 .tm-home-right {
 	padding: 70px 70px 100px 100px;
@@ -167,7 +169,7 @@ p:last-child { margin-bottom: 0; }
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
-	height: 600px;	
+	height: 600px;
 }
 
 
@@ -175,15 +177,15 @@ p:last-child { margin-bottom: 0; }
 #tm-section-2 {	background-image: url(../img/newnashville.jpg); }
 #tm-section-3 {	background-image: url(../img/strip-bg-03.jpg); }
 #tm-section-4 {	background-image: url(../img/strip-bg-04.jpg); }
-.tm-footer { 
+.tm-footer {
 	background-image: url(../img/strip-bg-05.jpg);
 	font-weight: 300;
-	display: -webkit-flex; 
-	display: -ms-flexbox; 
+	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-align-items: center;
 	    -ms-flex-align: center;
-	        align-items: center;	
+	        align-items: center;
 }
 
 .tm-section-header {
@@ -214,7 +216,7 @@ p:last-child { margin-bottom: 0; }
 .tm-white-curve-right-rec,
 .tm-white-curve-right-circle {
 	position: absolute;
-	background-color: white;	
+	background-color: white;
 	height: 100%;
 }
 
@@ -332,11 +334,11 @@ p:last-child { margin-bottom: 0; }
 .submit-btn:hover,
 .submit-btn:focus,
 .submit-btn:active,
-.submit-btn.active.focus, 
-.submit-btn.active:focus, 
-.submit-btn.active:hover, 
-.submit-btn:active.focus, 
-.submit-btn:active:focus, 
+.submit-btn.active.focus,
+.submit-btn.active:focus,
+.submit-btn.active:hover,
+.submit-btn:active.focus,
+.submit-btn:active:focus,
 .submit-btn:active:hover {
 	color: #040404;
     background-color: rgba(255, 255, 255, 0.46);
@@ -371,12 +373,12 @@ p:last-child { margin-bottom: 0; }
 	.navbar-nav .nav-link,
 	.navbar-nav .nav-link:focus { padding: 0.4em 0.8em; }
 	.navbar-brand {	padding: 0.4em 1em;	}
-	.navbar-container { 
+	.navbar-container {
 		font-size: 0.82em;
-		padding: 1.4em 1.8em; 
+		padding: 1.4em 1.8em;
 	}
     .tm-page-content { margin-top: 174px; }
-    
+
 }
 
 @media screen and (max-width: 1300px) {
@@ -405,7 +407,7 @@ p:last-child { margin-bottom: 0; }
 		width: 100%;
 	}
 
-	.tm-white-curve-left-rec, 
+	.tm-white-curve-left-rec,
 	.tm-white-curve-right-rec {
 		width: 60%;
 	}
@@ -415,7 +417,7 @@ p:last-child { margin-bottom: 0; }
 		padding-bottom: 2em;
 	}
 
-	.tm-white-curve-left-circle, 
+	.tm-white-curve-left-circle,
 	.tm-white-curve-right-circle {
 		width: 50%;
 	}
@@ -469,19 +471,19 @@ p:last-child { margin-bottom: 0; }
 	}
 }
 
-@media screen and (max-width: 800px) {	
-	body { 
+@media screen and (max-width: 800px) {
+	body {
 		background: none;
 		padding-left: 0;
 		padding-right: 0;
 	}
 }
 
-@media screen and (max-width: 550px) {	
+@media screen and (max-width: 550px) {
 	.tm-container {
 		padding-left: 30px;
 		padding-right: 30px;
-	}	
+	}
 }
 
 @media screen and (max-width: 480px) {
