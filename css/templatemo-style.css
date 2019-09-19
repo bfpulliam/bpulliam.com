@@ -6,13 +6,15 @@ http://www.templatemo.com/tm-482-strip
 
 */
 
-a { transition: all 0.3s ease; }
+a {
+	transition: all 0.3s ease; }
 
 button:focus { outline: none; }
 
 a:hover,
 a:focus {
 	color: #0275d8;
+	background-color: lightskyblue;
 	text-decoration: none;
 	outline: none;
 }
@@ -175,7 +177,10 @@ p:last-child { margin-bottom: 0; }
 
 #tm-section-1 {	background-image: url(../img/strip-bg-01.jpg); }
 #tm-section-2 {	background-image: url(../img/newnashville.jpg); }
-#tm-section-3 {	background-image: url(../img/strip-bg-03.jpg); }
+#tm-section-3 {
+	font-weight: bold;
+	opacity: 1;
+	background-image: url(../img/strip-bg-03.jpg); }
 #tm-section-4 {	background-image: url(../img/strip-bg-04.jpg); }
 .tm-footer {
 	background-image: url(../img/strip-bg-05.jpg);
