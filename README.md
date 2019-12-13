@@ -1,6 +1,6 @@
 # Career Portfolio
 
-Live site: https://bfpulliam.github.io/portfolio/
+Live site: https://bfpulliam.github.io/portfolio/ or bpulliam.com
 
 ## About
 
@@ -16,8 +16,8 @@ Bootstrap
 http://getbootstrap.com/
 
 ## Contact
-Developer/Full-stack Web Software Developer (in training)
+Developer/Full-stack Web Software Developer
 e-mail: bfpulliam@gmail.com
-LinkedIn: in development
+LinkedIn: linkedin.com/in/bettinapulliam
 
 
