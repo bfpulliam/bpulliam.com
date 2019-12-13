@@ -17,7 +17,9 @@ http://getbootstrap.com/
 
 ## Contact
 Developer/Full-stack Web Software Developer
+
 e-mail: bfpulliam@gmail.com
+
 LinkedIn: linkedin.com/in/bettinapulliam
 
 
