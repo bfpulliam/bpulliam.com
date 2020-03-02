@@ -1,6 +1,7 @@
 # Career Portfolio
 
-Live site: https://bfpulliam.github.io/portfolio/ or bpulliam.com
+Live site: https://bpulliam.com 
+https://bfpulliam.github.io/portfolio/
 
 ## About
 
