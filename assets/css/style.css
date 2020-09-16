@@ -1,6 +1,7 @@
 /* Custom Stylesheet */
 body {
   position: relative;
+  padding-top: 50px;
 }
 
 .navbar-brand {
@@ -32,4 +33,8 @@ body {
 /* Show the tooltip text when you mouse over the tooltip container */
 .tooltip:hover .tooltiptext {
   visibility: visible;
+}
+
+#three {
+  background-color: #331e38;
 }
