@@ -226,9 +226,13 @@
 	<!--Contact-->
 	<section id="four">
 		<h1 class="text-center text-white">Contact</h1>
+		<p></p>
+		<p></p>
 		<div class="container-fluid text-white text-center">
 			<h2>Available for hire</h2>
 			<h2> Open to relocation</h2>
+			<p></p>
+			<p></p>
 			<div>Current location: Auburn, AL</div>
 			<div><a href="https://docs.google.com/document/d/1auX1W5S0_MtG710KceCjbNWruV9pjrMdVxA_4LlctOI/edit?usp=sharing" target="_blank">Click here to view resume.</a></div>
 			<div>Github:<a href="https:/github.com/bfpulliam" target="_blank"> bfpulliam</a></div>
@@ -237,6 +241,7 @@
 			<div>LinkedIn:<a href="https://www.linkedin.com/in/bettinapulliam" target="_blank">
 							linkedin.com/in/bettinapulliam</a></div>
 		</div>
+		<p></p>
 	<!--Feedback-->
 	<div class="row">
 			<form id="my-form" class="mx-auto px-2 text-white-50 border rounded border-success"
@@ -262,8 +267,60 @@
 	</footer>
 	</section>
 
+	<script>
+		$(document).ready(function () {
+        $('[data-spy="scroll"]').each(function () {
+            var $spy = $(this).scrollspy('refresh');
+        });
+});
+
+window.addEventListener("DOMContentLoaded", function() {
+
+    // get the form elements defined in your form HTML above
+
+    var form = document.getElementById("my-form");
+    var button = document.getElementById("my-form-button");
+    var status = document.getElementById("my-form-status");
+
+    // Success and Error functions for after the form is submitted
+
+    function success() {
+        form.reset();
+        button.style = "display: none ";
+        status.innerHTML = "Thank you!";
+    }
+
+    function error() {
+        status.innerHTML = "Oops! There was a problem.";
+    }
+
+    // handle the form submission event
+
+    form.addEventListener("submit", function(ev) {
+        ev.preventDefault();
+    var data = new FormData(form);
+    ajax(form.method, form.action, data, success, error);
+    });
+    });
+
+  // helper function for sending an AJAX request
+
+    function ajax(method, url, data, success, error) {
+    var xhr = new XMLHttpRequest();
+    xhr.open(method, url);
+    xhr.setRequestHeader("Accept", "application/json");
+    xhr.onreadystatechange = function() {
+    if (xhr.readyState !== XMLHttpRequest.DONE) return;
+    if (xhr.status === 200) {
+        success(xhr.response, xhr.responseType);
+    } else {
+        error(xhr.status, xhr.response, xhr.responseType);
+    }
+    };
+    xhr.send(data);
+    }
+	</script>
 	<!--JavaScript at end of body for optimized loading-->
-	<script src="./assets/js/init.js"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
