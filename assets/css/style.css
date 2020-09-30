@@ -1,0 +1,74 @@
+/* Custom Stylesheet */
+body {
+  position: relative;
+  padding-top: 50px;
+}
+
+.navbar-brand {
+  font-weight: bolder;
+}
+
+.container-landing {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #007C77;
+}
+
+.container-landing p {
+  font-size: 3rem;
+  padding: 0.5rem;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.container-landing p span.typed-text {
+  font-weight: normal;
+  color: #FAFF00;
+  background-color: #007C77;
+}
+
+.container-landing p span.cursor {
+  display: inline-block;
+  background-color: #007C77;
+  margin-left: 0.1rem;
+  width: 3px;
+  animation: blink 1s infinite;
+}
+
+.container-landing p span.cursor.typing {
+  animation: none;
+}
+
+@keyframes blink {
+  0%  { background-color: #007C77; }
+  49% { background-color: #007C77; }
+  50% { background-color: transparent; }
+  99% { background-color: transparent; }
+  100%  { background-color: #007C77; }
+}
+
+#one {
+  background-color: #401F3E;
+  color: white;
+}
+
+#two {
+  background-color: #C2EABD;
+}
+
+.logos {
+  font-size: 8rem;
+}
+
+#three {
+  background-color: #5E0035;
+}
+
+#four {
+  height: 100vh;
+  background-color: #00272B;
+}
