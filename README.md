@@ -14,6 +14,4 @@ All suggestions for improvement are welcome!
 
 Developer/Full-stack Web Software Developer
 
-e-mail: bfpulliam@gmail.com
-
 LinkedIn: linkedin.com/in/bettinapulliam
