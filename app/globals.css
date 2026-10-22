@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+/* Tokens: a modernized version of the original teal, plum and yellow. */
+:root {
+  --paper: #f5f7f5;
+  --surface: #e8eeeb;
+  --ink: #14211f;
+  --muted: #4e5d5a;
+  --teal: #0b5c57;
+  --plum: #4a2346;
+  --signal: #e6d544;
+  --line: #c9d4d0;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0f2422;
+    --surface: #17322f;
+    --ink: #e7eeec;
+    --muted: #a3b5b1;
+    --teal: #6cc8bd;
+    --plum: #d9b1d3;
+    --signal: #e6d544;
+    --line: #2b4744;
+  }
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-teal: var(--teal);
+  --color-plum: var(--plum);
+  --color-signal: var(--signal);
+  --color-line: var(--line);
+  --font-display: "Bricolage Grotesque Variable", system-ui, sans-serif;
+  --font-sans: "Atkinson Hyperlegible", system-ui, sans-serif;
+}
+
+@layer base {
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+a {
+  color: var(--teal);
+  text-underline-offset: 0.2em;
+}
+:focus-visible {
+  outline: 3px solid var(--signal);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+}
+
+/* The one orchestrated moment: the answer to the hero question. */
+@keyframes speak {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes bar {
+  0%, 100% { transform: scaleY(0.35); }
+  50% { transform: scaleY(1); }
+}
+.answer { animation: speak 700ms 900ms both cubic-bezier(.2,.7,.2,1); }
+.wave span {
+  display: inline-block;
+  width: 4px;
+  border-radius: 2px;
+  background: var(--signal);
+  transform-origin: center;
+  animation: bar 900ms ease-in-out 3 both;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .answer, .wave span { animation: none; }
+}
