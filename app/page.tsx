@@ -1,4 +1,5 @@
 import { Hero } from "@/components/Hero";
+import { ContactForm } from "@/components/ContactForm";
 import { Work } from "@/components/Work";
 import { about, experience, profile, skills } from "@/content/site";
 
@@ -75,12 +76,8 @@ export default function Home() {
           <p className="mt-4 max-w-[55ch] text-xl">
             I&rsquo;m happy to hear about projects, speaking, or mentoring new developers.
           </p>
-          <p className="mt-8">
-            <a href={`mailto:${profile.email}`} className="font-display text-2xl font-bold break-all sm:text-4xl">
-              {profile.email}
-            </a>
-          </p>
-          <ul className="mt-8 flex flex-wrap gap-x-8 gap-y-2 font-bold">
+          <ContactForm />
+          <ul className="mt-12 flex flex-wrap gap-x-8 gap-y-2 font-bold">
             <li><a href={profile.linkedin} target="_blank" rel="noopener">LinkedIn</a></li>
             <li><a href={profile.github} target="_blank" rel="noopener">GitHub</a></li>
             <li><a href={profile.resume} target="_blank" rel="noopener">Resume</a></li>

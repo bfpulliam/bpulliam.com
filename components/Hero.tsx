@@ -31,10 +31,10 @@ export function Hero() {
           See my work
         </a>
         <a
-          href={`mailto:${profile.email}`}
+          href="#contact"
           className="rounded-full border-2 border-teal px-6 py-3 font-bold no-underline"
         >
-          Email me
+          Get in touch
         </a>
       </div>
     </section>

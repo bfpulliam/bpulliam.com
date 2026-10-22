@@ -8,7 +8,8 @@ export const profile = {
   question: "Who is Bettina Pulliam?",
   answer:
     "Bettina is a lead web software engineer. She builds fast, accessible websites and voice experiences, and leads the team that ships them. She started her career in a classroom, and still believes good software should teach people how to use it.",
-  email: "bpulliam.com@gmail.com",
+  // Formspree form used by the contact section (from the old site). Messages go to the email set in Formspree.
+  formEndpoint: "https://formspree.io/f/xleorvlr",
   linkedin: "https://www.linkedin.com/in/bettinapulliam",
   github: "https://github.com/bfpulliam",
   // TODO: replace with your current resume link
