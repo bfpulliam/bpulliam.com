@@ -26,13 +26,13 @@ export function Hero() {
       <div className="mt-10 flex flex-wrap gap-4">
         <a
           href="#work"
-          className="rounded-full bg-teal px-6 py-3 font-bold text-paper no-underline hover:opacity-90"
+          className="rounded-full bg-teal px-6 py-3 font-bold text-paper no-underline shadow-[0_5px_0_-1px_var(--plum)] transition-[translate,box-shadow,opacity] duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_0_-1px_var(--plum)] active:translate-y-0.5 active:shadow-none"
         >
           See my work
         </a>
         <a
           href="#contact"
-          className="rounded-full border-2 border-teal px-6 py-3 font-bold no-underline"
+          className="rounded-full border-2 border-teal px-6 py-3 font-bold no-underline transition-[translate,background-color,color] duration-200 hover:-translate-y-0.5 hover:bg-teal hover:text-paper active:translate-y-0.5"
         >
           Get in touch
         </a>

@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+/* Touch screens have no hover. Elements marked data-touch-hover get
+   data-inview="true" while they cross the middle of the screen
+   (components/TouchHover.tsx); these variants mirror their hover styles. */
+@custom-variant inview (&[data-inview="true"]);
+@custom-variant group-inview (&:is(.group[data-inview="true"] *));
+
 /* Tokens: a modernized version of the original teal, plum and yellow. */
 :root {
   --paper: #f5f7f5;
@@ -78,7 +84,26 @@ a {
   transform-origin: center;
   animation: bar 900ms ease-in-out 3 both;
 }
+/* Underline that draws in from the left on hover (nav, footer and text links) */
+.link-draw {
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  padding-bottom: 2px;
+  transition: background-size 220ms ease-out, color 220ms ease-out;
+}
+.link-draw:hover,
+.link-draw:focus-visible,
+.link-draw[data-inview="true"] {
+  background-size: 100% 2px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .answer, .wave span { animation: none; }
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+  }
 }

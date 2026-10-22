@@ -6,7 +6,7 @@ import { profile } from "@/content/site";
 type Status = "idle" | "sending" | "sent" | "error";
 
 const field =
-  "mt-1 w-full rounded-lg border-2 border-line bg-paper px-4 py-3 text-ink focus:border-teal focus:outline-none";
+  "mt-1 w-full rounded-lg border-2 border-line bg-paper px-4 py-3 text-ink transition-colors hover:border-muted focus:border-teal focus:outline-none";
 
 export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -57,7 +57,7 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={status === "sending"}
-          className="rounded-full bg-teal px-7 py-3 font-bold text-paper hover:opacity-90 disabled:opacity-60"
+          className="rounded-full bg-teal px-7 py-3 font-bold text-paper shadow-[0_5px_0_-1px_var(--plum)] transition-[translate,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_0_-1px_var(--plum)] active:translate-y-0.5 active:shadow-none disabled:translate-y-0 disabled:opacity-60"
         >
           {status === "sending" ? "Sending…" : "Send message"}
         </button>
