@@ -1,17 +1,23 @@
-# Career Portfolio
+# bpulliam.com
 
-Live site: <https://bpulliam.com>   or
+Portfolio for Bettina Pulliam, Lead Web Software Engineer.
 
-<https://bfpulliam.github.io/portfolio/>
+Built with Next.js (static export), TypeScript and Tailwind CSS, hosted on AWS Amplify.
 
-## About
+## Run locally
 
-This portfolio demonstrates my knowledge as a web developer.
+```bash
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # static site in out/
+```
 
-All suggestions for improvement are welcome!
+## Update content
 
-## Contact
+All text, projects, skills and experience live in `content/site.ts`. Project media lives in `public/work/`.
 
-Developer/Full-stack Web Software Developer
+## Deploy
 
-LinkedIn: linkedin.com/in/bettinapulliam
+Connect this repo's `main` branch in AWS Amplify Hosting. `amplify.yml` builds the site and publishes `out/`. Add `bpulliam.com` under Amplify's custom domains, then remove `CNAME` once DNS points to Amplify.
+
+The previous site is kept in `legacy/` until its cleanup is done.
