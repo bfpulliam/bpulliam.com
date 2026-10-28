@@ -1,0 +1,37 @@
+{
+  "name": "bpulliam-portfolio",
+  "version": "1.0.0",
+  "description": "Live site: <https://bpulliam.com>   or",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bfpulliam/bpulliam.com.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bfpulliam/bpulliam.com/issues"
+  },
+  "homepage": "https://github.com/bfpulliam/bpulliam.com#readme",
+  "dependencies": {
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "@fontsource/atkinson-hyperlegible": "^5.3.0",
+    "@formspree/react": "^3.0.0",
+    "next": "^16.4.2",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "postcss": "^8.5.31",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2"
+  },
+  "private": true
+}
