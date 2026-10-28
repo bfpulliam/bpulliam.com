@@ -1,43 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useForm, ValidationError } from "@formspree/react";
 import { profile } from "@/content/site";
 
-type Status = "idle" | "sending" | "sent" | "error";
-
 const field =
-  "mt-1 w-full rounded-lg border-2 border-line bg-paper px-4 py-3 text-ink transition-colors hover:border-muted focus:border-teal focus:outline-none";
+  "mt-1 w-full rounded-lg border-2 border-line bg-paper px-4 py-3 text-ink transition-colors hover:border-muted focus:border-teal focus:outline-none aria-[invalid=true]:border-plum";
+const fieldError = "mt-1 block text-sm font-normal text-plum";
 
 export function ContactForm() {
-  const [status, setStatus] = useState<Status>("idle");
-  const [detail, setDetail] = useState("");
+  const [state, handleSubmit] = useForm(profile.formId);
 
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const form = e.currentTarget;
-    setStatus("sending");
-    try {
-      const res = await fetch(profile.formEndpoint, {
-        method: "POST",
-        body: new FormData(form),
-        headers: { Accept: "application/json" },
-      });
-      if (!res.ok) {
-        // Formspree explains rejections, e.g. a deleted form or one awaiting email confirmation.
-        const data = await res.json().catch(() => null);
-        const why = data?.errors?.map((x: { message: string }) => x.message).join(" ") || data?.error || `HTTP ${res.status}`;
-        console.error("Contact form rejected:", res.status, data);
-        throw new Error(why);
-      }
-      form.reset();
-      setStatus("sent");
-    } catch (err) {
-      setDetail(err instanceof Error && err.message !== "Failed to fetch" ? err.message : "");
-      setStatus("error");
-    }
-  }
-
-  if (status === "sent") {
+  if (state.succeeded) {
     return (
       <p role="status" className="mt-8 max-w-[55ch] rounded-lg bg-surface p-6 text-lg">
         Message sent. Thanks for reaching out — I&rsquo;ll reply soon.
@@ -45,33 +18,55 @@ export function ContactForm() {
     );
   }
 
+  const invalid = (name: string) => Boolean(state.errors?.getFieldErrors(name).length) || undefined;
+  const formErrors = state.errors?.getFormErrors() ?? [];
+
   return (
-    <form onSubmit={onSubmit} className="mt-8 grid max-w-2xl gap-5 sm:grid-cols-2">
+    <form onSubmit={handleSubmit} className="mt-8 grid max-w-2xl gap-5 sm:grid-cols-2">
       <label className="font-bold">
         Name
         <input name="name" required autoComplete="name" className={field} />
       </label>
       <label className="font-bold">
         Email
-        <input name="email" type="email" required autoComplete="email" className={field} />
+        <input
+          name="email"
+          type="email"
+          required
+          autoComplete="email"
+          aria-invalid={invalid("email")}
+          aria-describedby="email-error"
+          className={field}
+        />
+        <ValidationError id="email-error" field="email" prefix="Email" errors={state.errors} className={fieldError} />
       </label>
       <label className="font-bold sm:col-span-2">
         Message
-        <textarea name="message" required rows={6} className={field} />
+        <textarea
+          name="message"
+          required
+          rows={6}
+          aria-invalid={invalid("message")}
+          aria-describedby="message-error"
+          className={field}
+        />
+        <ValidationError id="message-error" field="message" prefix="Message" errors={state.errors} className={fieldError} />
       </label>
+      {/* Tells Formspree what to put in the email subject. */}
+      <input type="hidden" name="_subject" value="New message from bpulliam.com" />
       {/* Spam trap: hidden from people, filled in by bots. */}
       <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
       <div className="flex flex-wrap items-center gap-4 sm:col-span-2">
         <button
           type="submit"
-          disabled={status === "sending"}
+          disabled={state.submitting}
           className="rounded-full bg-teal px-7 py-3 font-bold text-paper shadow-[0_5px_0_-1px_var(--plum)] transition-[translate,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_0_-1px_var(--plum)] active:translate-y-0.5 active:shadow-none disabled:translate-y-0 disabled:opacity-60"
         >
-          {status === "sending" ? "Sending…" : "Send message"}
+          {state.submitting ? "Sending…" : "Send message"}
         </button>
-        {status === "error" && (
+        {formErrors.length > 0 && (
           <p role="alert" className="text-plum">
-            Your message didn&rsquo;t send. {detail ? `The form service said: ${detail}` : "Check your connection and try again."}
+            Your message didn&rsquo;t send. {formErrors.map((e) => e.message).join(" ")}
           </p>
         )}
       </div>

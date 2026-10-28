@@ -8,9 +8,8 @@ export const profile = {
   question: "Who is Bettina Pulliam?",
   answer:
     "Bettina is a lead web software engineer. She builds fast, accessible and secure government websites, and leads the team that ships them. She started her career in a classroom, and still believes good software should teach people how to use it.",
-  // Formspree form used by the contact section (from the old site). Messages go to the email set in Formspree.
-  // Set NEXT_PUBLIC_FORM_ENDPOINT in Amplify's environment variables, or replace the fallback here.
-  formEndpoint: process.env.NEXT_PUBLIC_FORM_ENDPOINT || "https://formspree.io/f/xleorvlr",
+  // Formspree form ID for the contact section (https://formspree.io/f/<id>).
+  formId: process.env.NEXT_PUBLIC_FORMSPREE_ID || "mwllbyjo",
   linkedin: "https://www.linkedin.com/in/bettinapulliam",
   github: "https://github.com/bfpulliam",
   // TODO: replace with your current resume link
