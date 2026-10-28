@@ -10,6 +10,7 @@ const field =
 
 export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
+  const [detail, setDetail] = useState("");
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -21,10 +22,17 @@ export function ContactForm() {
         body: new FormData(form),
         headers: { Accept: "application/json" },
       });
-      if (!res.ok) throw new Error();
+      if (!res.ok) {
+        // Formspree explains rejections, e.g. a deleted form or one awaiting email confirmation.
+        const data = await res.json().catch(() => null);
+        const why = data?.errors?.map((x: { message: string }) => x.message).join(" ") || data?.error || `HTTP ${res.status}`;
+        console.error("Contact form rejected:", res.status, data);
+        throw new Error(why);
+      }
       form.reset();
       setStatus("sent");
-    } catch {
+    } catch (err) {
+      setDetail(err instanceof Error && err.message !== "Failed to fetch" ? err.message : "");
       setStatus("error");
     }
   }
@@ -63,7 +71,7 @@ export function ContactForm() {
         </button>
         {status === "error" && (
           <p role="alert" className="text-plum">
-            Your message didn&rsquo;t send. Check your connection and try again.
+            Your message didn&rsquo;t send. {detail ? `The form service said: ${detail}` : "Check your connection and try again."}
           </p>
         )}
       </div>
