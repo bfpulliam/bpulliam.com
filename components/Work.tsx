@@ -5,6 +5,22 @@ export function Media({ p, zoom = true }: { p: Project; zoom?: boolean }) {
   const cls = `w-full object-cover object-top aspect-[16/10] ${
     zoom ? "transition-transform duration-700 ease-out group-hover:scale-[1.04] group-inview:scale-[1.04]" : ""
   }`;
+  if (!p.media) {
+    return (
+      <div className={`flex ${zoom ? "aspect-[16/10]" : "aspect-[16/7] sm:aspect-[16/5]"} flex-col justify-end gap-1 bg-teal p-6 text-paper sm:p-10 ${zoom ? "transition-transform duration-700 ease-out group-hover:scale-[1.04] group-inview:scale-[1.04]" : ""}`}>
+        <span className="wave mb-auto flex h-8 items-center gap-1" aria-hidden="true">
+          {[14, 26, 18, 32, 22].map((h, i) => (
+            <span key={i} style={{ height: h, animationDelay: `${i * 70}ms` }} />
+          ))}
+        </span>
+        {(p.panel ?? [p.title]).map((line) => (
+          <span key={line} className="font-display text-[clamp(1.5rem,3.5vw,2.75rem)] font-bold leading-tight tracking-tight">
+            {line}
+          </span>
+        ))}
+      </div>
+    );
+  }
   if (p.media.video) {
     return (
       <video
@@ -23,12 +39,15 @@ export function Media({ p, zoom = true }: { p: Project; zoom?: boolean }) {
   return <img className={cls} src={p.media.poster} alt={p.media.alt} loading="lazy" />;
 }
 
+const statusLabel: Record<Project["status"], string> = {
+  government: "Government project, no public demo",
+  demo: "Sample client demo",
+  archived: "Archived client site",
+};
+
 export function Status({ p }: { p: Project }) {
-  if (p.status === "live") return null;
   return (
-    <span className="rounded-full border border-line px-3 py-0.5 text-sm text-muted">
-      {p.years ? `Live ${p.years}` : "No longer live"}
-    </span>
+    <span className="rounded-full border border-line px-3 py-0.5 text-sm text-muted">{statusLabel[p.status]}</span>
   );
 }
 
@@ -39,7 +58,7 @@ export function Work() {
         Selected work
       </h2>
       <p className="mt-4 max-w-[60ch] text-muted">
-        Some of these sites have since been retired by their owners. The recordings show them as they shipped.
+        Government work is described without code or screenshots. Client sites that have since been retired are shown as they shipped.
       </p>
       <div className="mt-12 space-y-20">
         {featured.map((p) => (

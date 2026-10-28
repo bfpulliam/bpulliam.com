@@ -6,7 +6,7 @@ import "@fontsource/atkinson-hyperlegible/400.css";
 import "@fontsource/atkinson-hyperlegible/700.css";
 import "./globals.css";
 
-const description = `${profile.name}, ${profile.role}. Fast, accessible websites and voice experiences.`;
+const description = `${profile.name}, ${profile.role}. Fast, accessible and secure government websites.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://bpulliam.com"),

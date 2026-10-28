@@ -32,7 +32,7 @@ export default function Home() {
           <h2 id="skills-h" className="font-display text-4xl font-bold tracking-tight sm:text-5xl">
             What I work with
           </h2>
-          <div className="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
             {skills.map((g) => (
               <div key={g.group} data-touch-hover className="group">
                 <h3 className="font-display text-xl font-bold text-plum transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-inview:-translate-y-0.5">{g.group}</h3>

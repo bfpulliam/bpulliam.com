@@ -7,7 +7,7 @@ export const profile = {
   company: "", // TODO: add your company name, or leave empty to hide it
   question: "Who is Bettina Pulliam?",
   answer:
-    "Bettina is a lead web software engineer. She builds fast, accessible websites and voice experiences, and leads the team that ships them. She started her career in a classroom, and still believes good software should teach people how to use it.",
+    "Bettina is a lead web software engineer. She builds fast, accessible and secure government websites, and leads the team that ships them. She started her career in a classroom, and still believes good software should teach people how to use it.",
   // Formspree form used by the contact section (from the old site). Messages go to the email set in Formspree.
   formEndpoint: "https://formspree.io/f/xleorvlr",
   linkedin: "https://www.linkedin.com/in/bettinapulliam",
@@ -28,11 +28,14 @@ export type Project = {
   summary: string;
   role: string;
   client: string;
-  years: string; // TODO: fill in, e.g. "2020–2021"
-  status: "live" | "archived";
+  // government: described without code or screenshots; demo: sample build; archived: retired client site
+  status: "government" | "demo" | "archived";
   stack: string[];
-  media: { video?: string; poster: string; alt: string };
+  // Either a recording/screenshot (media) or, for work that can't be shown, a typographic panel.
+  media?: { video?: string; poster: string; alt: string };
+  panel?: string[];
   before?: { src: string; alt: string };
+  gallery?: { src: string; alt: string; caption: string }[];
   // Case study. Lines starting with "TODO" are hidden on the site until you replace them.
   problem: string;
   approach: string[];
@@ -42,13 +45,111 @@ export type Project = {
 
 export const featured: Project[] = [
   {
+    slug: "storybook-nextjs-migration",
+    title: "Storybook and a Next.js migration",
+    summary:
+      "I introduced Storybook as our component workshop and led the migration of our government sites to Next.js for server-side rendering.",
+    role: "Lead engineer",
+    client: "Government web projects",
+    status: "government",
+    stack: ["Next.js", "Server-side rendering", "Storybook", "React"],
+    panel: ["Storybook", "Next.js", "Server-side rendering"],
+    problem:
+      "Our sites needed a faster, more consistent way to build and review interface components, and pages that render on the server so they load quickly and are easy for search engines to read.",
+    approach: [
+      "Introduced Storybook so every component is built, reviewed and tested on its own before it reaches a page.",
+      "Led the framework migration to Next.js, moving pages to server-side rendering.",
+      "TODO: the framework you migrated from, how you staged the migration, and how many sites or developers it covered.",
+    ],
+    outcome: [
+      "TODO: what changed, e.g. faster page loads, fewer UI bugs, or quicker reviews.",
+    ],
+    links: [],
+  },
+  {
+    slug: "ipaws-alerts",
+    title: "Reviving an emergency alerts project",
+    summary:
+      "I brought an archived project back into service. It's now used for FEMA IPAWS alerts and notifications.",
+    role: "Lead engineer",
+    client: "Government web projects",
+    status: "government",
+    stack: ["Legacy code revival", "FEMA IPAWS", "Alerts and notifications"],
+    panel: ["Archived", "Revived", "In service for FEMA IPAWS"],
+    problem:
+      "An archived project was needed again to support FEMA's Integrated Public Alert and Warning System (IPAWS), which delivers emergency alerts and notifications to the public. The code had been shelved and needed to run reliably again.",
+    approach: [
+      "Revived the archived codebase and brought it back into active use.",
+      "TODO: what you updated to get it running, e.g. dependencies, hosting, security fixes or testing.",
+    ],
+    outcome: [
+      "The project is in active use today for FEMA IPAWS alerts and notifications.",
+      "TODO: anything else, e.g. how quickly it was back in service.",
+    ],
+    links: [],
+  },
+  {
+    slug: "accessible-secure-government-sites",
+    title: "Accessible, secure government sites",
+    summary:
+      "I use Deque's axe tools to make sure our government websites meet ADA accessibility requirements, and I implement the cybersecurity standards that protect them.",
+    role: "Lead engineer",
+    client: "Government web projects",
+    status: "government",
+    stack: ["axe DevTools", "WCAG", "ADA compliance", "Cybersecurity"],
+    panel: ["Accessible to everyone", "Secure by default"],
+    problem:
+      "Government websites have to work for everyone, including people who use screen readers, keyboards or other assistive technology, and they have to stay protected from attacks.",
+    approach: [
+      "Audit our sites with Deque's axe tools to find accessibility issues and fix them against WCAG, the standard behind ADA requirements.",
+      "Implement cybersecurity standards across the sites.",
+      "TODO: which security standards you follow, and whether accessibility checks run automatically in your builds.",
+    ],
+    outcome: [
+      "TODO: e.g. sites passing accessibility audits, issues fixed, or security reviews passed.",
+    ],
+    links: [],
+  },
+  {
+    slug: "konnect-u",
+    title: "KoNNECT-U",
+    summary:
+      "A sample client site for a network of nurses who escort patients on commercial flights. Built to show how I'd approach a small-business brief today.",
+    role: "Designer and developer",
+    client: "Sample client demo",
+    status: "demo",
+    stack: ["Next.js 16", "TypeScript", "Tailwind CSS 4", "React Hook Form", "Zod"],
+    media: {
+      video: "/work/konnect-u.mp4",
+      poster: "/work/konnect-u.webp",
+      alt: "Scrolling through the KoNNECT-U homepage, then opening the request form",
+    },
+    gallery: [
+      {
+        src: "/work/konnect-u-form.webp",
+        alt: "The first step of the four-step request form",
+        caption: "The request form splits the intake into four short steps.",
+      },
+    ],
+    problem:
+      "Families arranging care for someone who has to fly need to trust the service quickly, then request help without a long phone call. The site has to feel warm and calm, and it has to work for older visitors on any device.",
+    approach: [
+      "Designed the homepage around a boarding pass, so visitors understand the service at a glance: a patient in one seat, a registered nurse in the next.",
+      "Built a four-step request form with React Hook Form and Zod, validated again on the server.",
+      "Chose a high-legibility typeface and checked color contrast for older visitors.",
+      "Added a scroll-based stand-in for hover effects on touch screens, and turned motion off for visitors who prefer reduced motion.",
+      "Kept every page static, so the site loads quickly.",
+    ],
+    outcome: [],
+    links: [],
+  },
+  {
     slug: "voice-series",
     title: "The Voice Series",
     summary:
       "A WordPress site for a voice-first content series. I built the site, recorded and edited its demo media, and set up the search optimization.",
     role: "Developer and SEO",
     client: "Data Driven Design",
-    years: "",
     status: "archived",
     stack: ["WordPress", "Yoast SEO", "Voice UX"],
     media: {
@@ -65,7 +166,7 @@ export const featured: Project[] = [
       "TODO: anything else you decided or built, such as the page structure or navigation.",
     ],
     outcome: [
-      "TODO: what happened after launch, e.g. traffic, search ranking, leads, or how long the site ran.",
+      "TODO: what happened after launch, e.g. traffic, search ranking or leads.",
     ],
     links: [],
   },
@@ -76,7 +177,6 @@ export const featured: Project[] = [
       "A redesign for a small-business directory. I defined the brand colors and theme, rebuilt the layout, and loaded the client's business listings into the backend.",
     role: "Designer and developer",
     client: "Client project",
-    years: "",
     status: "archived",
     stack: ["WordPress", "Brand system", "Content migration"],
     media: {
@@ -107,7 +207,6 @@ export const featured: Project[] = [
       "A rebuild of a wellness brand's WordPress site, restructured for clearer navigation and better search visibility.",
     role: "Developer",
     client: "Data Driven Design",
-    years: "",
     status: "archived",
     stack: ["WordPress", "SEO", "UX"],
     media: {
@@ -133,7 +232,7 @@ export const featured: Project[] = [
 export const skills: { group: string; items: string[] }[] = [
   {
     group: "Frontend",
-    items: ["TypeScript", "JavaScript", "React", "Next.js", "Vue", "Tailwind CSS", "HTML", "CSS"],
+    items: ["TypeScript", "JavaScript", "React", "Next.js", "Storybook", "Tailwind CSS", "Vue", "HTML", "CSS"],
   },
   {
     group: "Backend",
@@ -144,17 +243,21 @@ export const skills: { group: string; items: string[] }[] = [
     items: ["Alexa Skills", "Google Actions", "Voice UI design", "UX research", "Adobe XD"],
   },
   {
+    group: "Accessibility and security",
+    items: ["axe DevTools", "WCAG and ADA compliance", "Cybersecurity standards", "Server-side rendering"],
+  },
+  {
     group: "Web platform",
     items: ["WordPress", "SEO", "Google Analytics", "Git and GitHub", "AWS Amplify"],
   },
 ];
 
-// Newest first. TODO: add years.
+// Newest first.
 export const experience = [
   {
     title: "Lead Web Software Engineer",
     place: "Current role", // TODO: company name
-    note: "Leading web engineering: architecture, code review, and shipping.",
+    note: "Leading government web projects: a Next.js migration, Storybook, accessibility and security.",
   },
   {
     title: "Apprentice, voice and web",

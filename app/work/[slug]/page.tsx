@@ -86,12 +86,19 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
                   <figcaption className="mt-2 text-sm text-muted">Before</figcaption>
                 </figure>
                 <figure>
-                  <img className="w-full rounded-lg border border-line" src={p.media.poster} alt={p.media.alt} loading="lazy" />
+                  {p.media && <img className="w-full rounded-lg border border-line" src={p.media.poster} alt={p.media.alt} loading="lazy" />}
                   <figcaption className="mt-2 text-sm text-muted">After</figcaption>
                 </figure>
               </div>
             </section>
           )}
+
+          {p.gallery?.map((g) => (
+            <figure key={g.src}>
+              <img className="w-full rounded-lg border border-line" src={g.src} alt={g.alt} loading="lazy" />
+              <figcaption className="mt-2 text-sm text-muted">{g.caption}</figcaption>
+            </figure>
+          ))}
 
           {outcome.length > 0 && (
             <section>
